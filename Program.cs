@@ -106,15 +106,26 @@ public class Payment
 
 public class PaymentService
 {
-    public void ProcessPayment(int userId, int eventId, float amount)
+    private readonly string _portmoneApiKey;
+
+    public PaymentService(string portmoneApiKey)
     {
-        // Process a payment for an event
+        _portmoneApiKey = portmoneApiKey;
+    }
+
+    public bool ProcessPayment(int userId, int eventId, float amount)
+    {
+        // Simulate calling Portmone API to process payment
+        Console.WriteLine($"Processing payment through Portmone for User {userId}, Event {eventId}, Amount {amount}");
+        // Here would be the actual API integration code
+        return true; // Assume success for now
     }
 
     public Payment GetPayment(int paymentId)
     {
-        // Retrieve payment details
-        return null;
+        // Retrieve payment details from the database
+        Console.WriteLine($"Retrieving payment details for PaymentId {paymentId}");
+        return new Payment(paymentId, 123, 99.99f, "Completed"); // Simulated response
     }
 }
 
@@ -131,9 +142,6 @@ public class NotificationService
         // Send an SMS notification
     }
 }
-
-// Utilities and Helpers
-
 
 public class Database
 {
